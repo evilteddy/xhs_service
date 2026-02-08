@@ -1,0 +1,50 @@
+# Search configuration
+search:
+  keywords:
+    - "Python"
+    - "AI"
+  max_notes: 100          # Max notes to crawl per keyword
+  scroll_times: 20        # Number of scroll-down actions per search
+  sort_by: "popularity"   # Sort order: 'general'(综合), 'popularity'(最热), 'time'(最新)
+
+# Filter configuration
+filter:
+  note_type: "normal"     # Note type: 'normal'=图文, 'video'=视频, ''=all
+  date_range:
+    enabled: true
+    # Use relative time: only keep notes from the last 180 days (~6 months)
+    recent_days: 180
+    # Or use absolute date range (ignored when recent_days is set):
+    # start_date: "2025-08-01"
+    # end_date: "2026-02-07"
+  min_likes: 10           # Minimum likes threshold (filter out low-engagement notes)
+
+# Output configuration
+output:
+  formats:
+    - "excel"
+    - "csv"
+    - "json"
+    - "google_sheets"         # 导出到 Google Sheets（需要配置下方 google_sheets 部分）
+  download_images: false
+  output_dir: "./data/exports"
+  image_dir: "./data/images"
+
+# Google Sheets 导出配置
+google_sheets:
+  credentials_file: "./credentials/google_service_account.json"  # Google 服务账号 JSON 密钥文件路径
+  spreadsheet_id: ""           # 已有 Google Sheet 的 ID（留空则自动创建新表）
+  spreadsheet_name: "小红书爬虫数据"  # 新建表格的名称（仅当 spreadsheet_id 为空时生效）
+  share_with: "sunnyeday9@gmail.com"               # 你的 Google 邮箱，新建表格会自动共享给此邮箱
+
+# Scheduler configuration
+scheduler:
+  enabled: false
+  cron: "0 8 * * *"       # Cron expression, e.g. every day at 8:00 AM
+
+# Crawler behavior configuration
+behavior:
+  min_delay: 0.5          # Minimum delay between actions (seconds)
+  max_delay: 2.0          # Maximum delay between actions (seconds)
+  detail_page_delay: 20.0 # Delay before extracting detail page (seconds)
+  login_wait: 20          # Seconds to wait for QR code login

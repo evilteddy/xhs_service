@@ -1,0 +1,9 @@
+DrissionPage>=4.0.0
+pandas>=2.0.0
+openpyxl>=3.1.0
+PyYAML>=6.0
+APScheduler>=3.10.0
+requests>=2.31.0
+tqdm>=4.66.0
+gspread>=6.0.0
+google-auth>=2.20.0
